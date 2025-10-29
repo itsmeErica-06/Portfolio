@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Header Example</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Heading style */
+    .h1 {
+      font-style: oblique;
+      color: black;
+      text-align: right;
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    body {
+      background-color: skyblue;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar container */
+    .navbar {
+      background-color: black;
+      text-align: center;
+      padding: 30px 50px;
+    }
+
+    /* Home link */
+    .navbar a {
+      color: yellowgreen;
+      font-weight: 700;
+      font-size: large;
+      font-style: oblique;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Hover effect */
+    .navbar a:hover {
+      color: #ddd;
+    }
+
+    /* Container to align image and content side by side */
+    .main-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 50px;
+      padding: 0 60px;
+    }
+
+    /* Image container with box styling */
+    .image-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30%; /* Adjusted width */
+      height: 500px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Portfolio image */
+    .portfolio-img {
+      width: 30%;
+      height: 300px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .portfolio-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Text content inside the same container as the image */
+    .about-text {
+      width: 50%; /* Adjusted width */
+      padding-left: 30px;
+      font-size: 18px;
+      color: darkslategray;
+      text-align: justify;
+    }
+
+    /* Sliding section */
+    .sliding-container {
+      display: flex;
+      justify-content: space-between;
+      width: 900px;
+      margin-top: 30px;
+    }
+
+    .slide {
+      width: 270px; /* Adjust width for each slide */
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide:hover {
+      transform: scale(1.05); /* Zoom effect on hover */
+    }
+
+    /* Slide text */
+    .slide h3 {
+      font-size: 24px;
+      color: darkslategray;
+      margin-bottom: 10px;
+    }
+
+    .slide p {
+      font-size: 16px;
+      color: darkslategray;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+  </nav>
+
+  <!-- Main container for image and content (about me) side by side -->
+  <div class="main-container">
+
+    <!-- Image and Text container -->
+    <div class="image-container">
+      <!-- Image -->
+      <img src="C:\Users\7BLab\Downloads\erica.jpg" alt="Erica's Photo" class="portfolio-img">
+      <!-- Text about me on the right side -->
+      <div class="about-text">
+        <p class="h1">Get to know Erica!</p>
+        <p>
+          Hello! I'm Erica, a passionate individual with a love for creativity, technology, and personal growth. 
+          I enjoy exploring new hobbies, learning new skills, and making the most out of every day. 
+          My journey is all about improvement, curiosity, and fun!
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</body>
+</html>
