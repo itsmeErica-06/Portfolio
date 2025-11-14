@@ -224,7 +224,7 @@
     color: #666;
     line-height: 1.5;
 }
-        /* Slide 3 - Skills */
+        /* Slide 3 - Education */
         .education h2 {
             font-size: 2.5rem;
             color: #4A90E2;
@@ -232,12 +232,38 @@
             text-align: center;
         }
 
-        .education-list {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            font-size: 1.2rem;
-            color: #333;
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
         }
+
+        .edu-box {
+            background: lightblue;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid #4A90E2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .edu-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+        }
+
+        .edu-box h3 {
+            font-size: 1.4rem;
+            color: #2C5F8D;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-box p {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
 
         /* Slider Controls */
         .slider-controls {
@@ -489,17 +515,41 @@
         </div>
     </div>
 </div>
-                <!-- Slide 3: Skills -->
+                <!-- Slide 3: UPDATED EDUCATION -->
                 <div class="slide slide-education">
                     <h2>Education</h2>
-                    <ul class="education-list">
-                        <li>Elementary </li>
-                        <li>Flexible</li>
-                        <li>.</li>
-                        <li>.</li>
-                        <li>.</li>
-                    </ul>
+
+                    <div class="education-container">
+
+                        <div class="edu-box">
+                            <h3>Elementary</h3>
+                            <p>• El Salvador Elementary School<br>
+                               • With Honors</p>
+                        </div>
+
+                        <div class="edu-box">
+                            <h3> Junior High School</h3>
+                            <p>• Ambassador Pablo R. Suarez National High School<br>
+                               • With Honors</p>
+                        </div>
+
+                        <div class="edu-box">
+                            <h3>Senior High School</h3>
+                            <p>• Ambassador Pablo R. Suarez National High School<br>
+                               • Strand - GAS -ABM<br>
+                               • With Honors</p>
+                        </div>
+
+                        <div class="edu-box">
+                            <h3>College</h3>
+                            <p>• School Name<br>
+                               • Course<br>
+                               • Year Level</p>
+                        </div>
+
+                    </div>
                 </div>
+
             </div>
 
             <!-- Slider Controls -->
