@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +10,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            text-align: justify;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #4A90E2 0%, #2C5F8D 100%);
+            background: linear-gradient(135deg, #092b5e 0%, #2C5F8D 100%);
             min-height: 100vh;
         }
 
@@ -132,19 +134,19 @@
         }
 
         .profile-image {
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             border-radius: 20px;
             object-fit: cover;
-            border: 5px solid #4A90E2;
+            border: 5px lightseagreen;
             margin-bottom: 1rem;
             box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
         }
 
         .profile-section h1 {
             font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 0.5rem;
+            color: #e21818;
+            margin-bottom:auto;
             background: linear-gradient(135deg, #4A90E2 0%, #2C5F8D 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -172,7 +174,7 @@
         .about-content p {
             font-size: 1.1rem;
             color: #555;
-            line-height: 1.8;
+            line-height: 2;
         }
 
         /* Slide 2 - Hobbies */
@@ -184,37 +186,113 @@
         }
 
         .hobbies-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
             justify-content: center;
         }
 
-        /* Updated: Show only icons for hobbies */
-        .hobby {
+        /* Hobby boxes */
+        .hobby-box {
+            background: lightblue;
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .hobby-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+            border-color: #4A90E2;
+        }
+
+        .hobby-icon {
             font-size: 3rem;
             color: #4A90E2;
-            cursor: default;
-            transition: color 0.3s ease;
+            margin-bottom: 1rem;
+            font-weight:bold;
         }
 
-        .hobby:hover {
-            color: #2C5F8D;
+        .hobby-box h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.5rem;
         }
 
-        /* Slide 3 - Skills */
-        .slide-skills h2 {
+        .hobby-box p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Slide 3 - Education */
+        .slide-education h2 {
             font-size: 2.5rem;
             color: #4A90E2;
             margin-bottom: 2rem;
             text-align: center;
         }
 
-        .skills-list {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            font-size: 1.2rem;
+        .education-timeline {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .education-timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .edu-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .edu-header {
+            font-size: 1.6rem;
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #4A90E2 0%, #2C5F8D 100%);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .edu-box {
+            background: lightblue;
+            padding: 1.5rem;
+            border-radius: 0 0 15px 15px;
+            border-left: 5px solid #4A90E2;
+            border-right: 5px solid #4A90E2;
+            border-bottom: 5px solid #4A90E2;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            width: 500px;      
+            height: 220px; 
+        }
+
+        .edu-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+        }
+
+        .edu-box p {
+            font-size: 1rem;
             color: #333;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-box strong {
+            color: #2C5F8D;
+            font-weight: 600;
         }
 
         /* Slider Controls */
@@ -405,7 +483,7 @@
                 <div class="slide slide-about">
                     <div class="profile-section">
                         <img
-                            src="C:\Users\501C\Downloads\erica.jpg"
+                            src="https://www.facebook.com/photo/?fbid=653971350082705&set=pcb.653972933415880"
                             alt="Profile Picture"
                             class="profile-image"
                         />
@@ -414,8 +492,15 @@
                     </div>
                     <div class="about-content">
                         <h2>About Me</h2>
+                        <br>
                         <p>
-                           I am a BSIT student at Holy Name University.
+                            Get to know me! I am Erica, a working student who enjoys discovering new things and keeping life simple. I like doing things in a calm,
+                            straightforward way and focusing on what truly matters.
+                        </p>
+                        <br>
+                        <p>
+                            Even while balancing work and studies, I stay curious and open to learning. I'm an easy-to-go person who appreciates 
+                            simple routines, meaningful experiences, and small moments that help me grow every day.
                         </p>
                     </div>
                 </div>
@@ -424,24 +509,93 @@
                 <div class="slide slide-hobbies">
                     <h2>My Hobbies</h2>
                     <div class="hobbies-container">
-                        <div class="hobby"><i class="fas fa-book"></i></div>
-                        <div class="hobby"><i class="fas fa-gamepad"></i></div>
-                        <div class="hobby"><i class="fas fa-plane"></i></div>
-                        <div class="hobby"><i class="fas fa-camera"></i></div>
+                        <div class="hobby-box">
+                            <div class="hobby-icon">📷</div>
+                            <h3>Photography</h3>
+                            <p>Capturing beautiful moments</p>
+                        </div>
+                        <div class="hobby-box">
+                            <div class="hobby-icon">🏊</div>
+                            <h3>Swimming</h3>
+                            <p>Staying fit in the water</p>
+                        </div>
+                        <div class="hobby-box">
+                            <div class="hobby-icon">✈️</div>
+                            <h3>Travelling</h3>
+                            <p>Exploring new destinations</p>
+                        </div>
+                        <div class="hobby-box">
+                            <div class="hobby-icon">🎮</div>
+                            <h3>Gaming</h3>
+                            <p>Strategic games enthusiast</p>
+                        </div>
+                        <div class="hobby-box">
+                            <div class="hobby-icon">⚽</div>
+                            <h3>Playing Sports</h3>
+                            <p>Staying active and competitive</p>
+                        </div>
+                        <div class="hobby-box">
+                            <div class="hobby-icon">🎬</div>
+                            <h3>Watching Movies</h3>
+                            <p>Enjoying cinema and storytelling</p>
+                        </div>
+                        <div class="hobby-box">
+                            <div class="hobby-icon">💪</div>
+                            <h3>Exercising</h3>
+                            <p>Building strength and wellness</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Slide 3: Skills -->
-                <div class="slide slide-skills">
-                    <h2>My Skills</h2>
-                    <ul class="skills-list">
-                        <li>Computer Literate</li>
-                        <li>Flexible</li>
-                        <li>.</li>
-                        <li>.</li>
-                        <li>.</li>
-                    </ul>
+                <!-- Slide 3: Education -->
+                <div class="slide slide-education">
+                    <h2>Education</h2>
+
+                    <div class="education-timeline">
+                        <!-- Elementary Section -->
+                        <div class="edu-section">
+                            <h3 class="edu-header">Elementary</h3>
+                            <div class="edu-box">
+                                <p><strong>School:</strong> El Salvador Elementary School</p>
+                                <p><strong>Year:</strong> 2017</p>
+                                <p><strong>Honors:</strong> With Honors</p>
+                            </div>
+                        </div>
+
+                        <!-- Junior High School Section -->
+                        <div class="edu-section">
+                            <h3 class="edu-header">Junior High School</h3>
+                            <div class="edu-box">
+                                <p><strong>School:</strong> Ambassador Pablo R. Suarez National High School</p>
+                                <p><strong>Year:</strong> 2021</p>
+                                <p><strong>Honors:</strong> With Honors</p>
+                            </div>
+                        </div>
+
+                        <!-- Senior High School Section -->
+                        <div class="edu-section">
+                            <h3 class="edu-header">Senior High School</h3>
+                            <div class="edu-box">
+                                <p><strong>School:</strong> Ambassador Pablo R. Suarez National High School</p>
+                                <p><strong>Year:</strong> 2023</p>
+                                <p><strong>Strand:</strong> GAS - ABM</p>
+                                <p><strong>Honors:</strong> With Honors</p>
+                            </div>
+                        </div>
+
+                        <!-- College Section -->
+                        <div class="edu-section">
+                            <h3 class="edu-header">College</h3>
+                            <div class="edu-box">
+                                <p><strong>School:</strong> Holy Name University</p>
+                                <p><strong>Course:</strong> Bachelor of Science in Information Technology</p>
+                                <p><strong>Year Level:</strong> 3</p>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Slider Controls -->
@@ -462,20 +616,21 @@
             <h2>My Projects</h2>
             <div class="projects-grid">
                 <div class="project-card" onclick="toggleProjectDetails(this)">
-                    <h3>Project One</h3>
+                    <h3>Project One : Basic Mascot Logo</h3>
                     <div class="project-details" style="display:none;">
-                        <img src="C:\Users\501C\Downloads\project1.jpg" alt="Project One" />
+                        <img src="C:\Users\501C\Downloads\63c1df8a-32ad-43e2-8a50-71d0c1636e46.jpg" alt="Project One" />
+                         <p><strong>Status:</strong> Completed</p> <br>
                         <p>
-                            A responsive e-commerce website with modern design and
-                            seamless user experience. Built with HTML, CSS, and
-                            JavaScript.
+                            For our Basic Multimedia midterm project, I created a simple mascot logo using my own photo. 
+                            We were required to use Adobe Photoshop to apply what we learned in the topic Adobe Photoshop Basics.
                         </p>
                     </div>
                 </div>
                 <div class="project-card" onclick="toggleProjectDetails(this)">
-                    <h3>Project Two</h3>
+                    <h3>Project Two: Portfolio Website</h3>
                     <div class="project-details" style="display:none;">
-                        <img src="C:\Users\501C\Downloads\project2.jpg" alt="Project Two" />
+                        <img src="C:\Users\501C\Downloads\api.png" alt="Project Two" />
+                         <p><strong>Status:</strong> Completed</p> <br>
                         <p>
                             Portfolio website for a creative agency featuring smooth
                             animations and interactive elements.
@@ -483,12 +638,29 @@
                     </div>
                 </div>
                 <div class="project-card" onclick="toggleProjectDetails(this)">
-                    <h3>Project Three</h3>
+                    <h3>Project Three: API Integration</h3>
+                    <div class="project-details" style="display:none;">
+                        <img src="C:\Users\501C\Downloads\api.png" alt="Project Two" />
+                         <p><strong>Status:</strong> Completed</p> <br>
+                        <p>
+                            My final project for our course Systems Integration and Architecture 1, we are assigned to design a website, 
+                            that must have 4 static pages with 1 API per page.
+                             The API in my website are the Weather API, Currency Converter, Random Facts API, and Email Verification.
+                        </p>
+                    </div>
+                </div>
+                <div class="project-card" onclick="toggleProjectDetails(this)">
+                    <h3>Project Four: MotoCar Rental System</h3>
                     <div class="project-details" style="display:none;">
                         <img src="C:\Users\501C\Downloads\project3.jpg" alt="Project Three" />
+                         <p><strong>Status:</strong> Completed</p> <br>
                         <p>
-                            Mobile-first web application with real-time data
-                            visualization and intuitive navigation.
+                            Our final project for the course Advanced Information Management,
+                             a robust web-based platform designed to streamline the process of renting motorcars. 
+                             Built using PHP for the front-end and a powerful back-end database integration, 
+                             the system provides both users and administrators with a seamless and efficient experience. 
+                             The platform allows users to browse available vehicles, make reservations, and manage bookings in real-time,
+                             while administrators can easily track vehicle availability, process rentals, and maintain customer data.
                         </p>
                     </div>
                 </div>
@@ -517,7 +689,7 @@
             <div class="contact-info">
                 <p>
                     Or reach me at:
-                    <a href="mailto:your.email@example.com">ericacubos@gmail.com</a>
+                    <a href="mailto:ericacubos@gmail.com">ericacubos@gmail.com</a>
                 </p>
             </div>
         </div>
