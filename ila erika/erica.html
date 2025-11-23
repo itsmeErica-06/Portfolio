@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Erica C. Cubos - Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: #0a0a0a;
+        overflow-x: hidden;
+      }
+
+      /* Animated gradient background */
+      body::before {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          #667eea 0%,
+          #764ba2 25%,
+          #f093fb 50%,
+          #4facfe 75%,
+          #00f2fe 100%
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        z-index: -2;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Floating orbs */
+      body::after {
+        content: "";
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(102, 126, 234, 0.3),
+          transparent
+        );
+        border-radius: 50%;
+        filter: blur(80px);
+        top: 20%;
+        left: 10%;
+        animation: float 20s infinite ease-in-out;
+        z-index: -1;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        33% {
+          transform: translate(100px, -100px);
+        }
+        66% {
+          transform: translate(-100px, 100px);
+        }
+      }
+
+      /* Navigation */
+      nav {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 8px 20px;
+        border-radius: 25px;
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* Section styling */
+      section {
+        min-height: 100vh;
+        padding: 100px 20px 50px;
+        display: none;
+      }
+
+      section.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        padding: 3rem;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      /* Home Section - Slider */
+      #home .container {
+        overflow: hidden;
+        position: relative;
+        padding: 2rem;
+        min-height: 600px;
+      }
+
+      .slider-wrapper {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        padding: 2rem;
+      }
+
+      /* Slide 1 - About Me */
+      .slide-about {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .profile-section {
+        text-align: center;
+      }
+
+      .profile-image {
+        width: 400px;
+        height: 600px;
+        border-radius: 30px;
+        object-fit: cover;
+        border: 5px solid transparent;
+        background: linear-gradient(white, white) padding-box,
+          linear-gradient(135deg, #667eea, #764ba2, #f093fb) border-box;
+        margin-bottom: 1rem;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        animation: floatImage 6s ease-in-out infinite;
+      }
+
+      @keyframes floatImage {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      .profile-section h1 {
+        font-size: 2.8rem;
+        color: #2d3748;
+        margin-bottom: 0.5rem;
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tagline {
+        font-size: 1.2rem;
+        color: #718096;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .about-content {
+        flex: 1;
+        min-width: 300px;
+        max-width: 500px;
+      }
+
+      .about-content h2 {
+        font-size: 2.2rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+      }
+
+      .about-content p {
+        font-size: 1.05rem;
+        color: #4a5568;
+        line-height: 1.9;
+        text-align: justify;
+      }
+
+      /* Slide 2 - Hobbies */
+      .slide-hobbies h2 {
+        font-size: 2.8rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+      }
+
+      .hobbies-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        justify-content: center;
+      }
+
+      .hobby-box {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.1),
+          rgba(240, 147, 251, 0.1)
+        );
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hobby-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+      }
+
+      .hobby-box:hover::before {
+        opacity: 0.15;
+      }
+
+      .hobby-box:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        border-color: #667eea;
+      }
+
+      .hobby-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+        transition: transform 0.4s ease;
+      }
+
+      .hobby-box:hover .hobby-icon {
+        transform: scale(1.2) rotate(-10deg);
+      }
+
+      .hobby-box h3 {
+        font-size: 1.3rem;
+        color: #2d3748;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .hobby-box p {
+        font-size: 0.95rem;
+        color: #718096;
+        line-height: 1.5;
+      }
+
+      /* Slide 3 - Education */
+      .slide-education h2 {
+        font-size: 2.8rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+      }
+
+      .education-timeline {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+        .education-timeline {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .edu-section {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .edu-header {
+        font-size: 1.6rem;
+        color: white;
+        font-weight: 700;
+        text-align: center;
+        padding: 1.2rem;
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .edu-box {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.05),
+          rgba(240, 147, 251, 0.05)
+        );
+        padding: 1.5rem;
+        border-radius: 0 0 20px 20px;
+        border: 3px solid transparent;
+        background-clip: padding-box;
+        border-image: linear-gradient(135deg, #667eea, #764ba2, #f093fb) 1;
+        transition: all 0.4s ease;
+        text-align: left;
+        width: 100%;
+        min-height: 220px;
+      }
+
+      .edu-box:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+      }
+
+      .edu-box p {
+        font-size: 1rem;
+        color: #2d3748;
+        line-height: 1.8;
+        margin-bottom: 0.5rem;
+      }
+
+      .edu-box strong {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+      }
+
+      /* Slider Controls */
+      .slider-controls {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .slider-btn {
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        color: white;
+        border: none;
+        padding: 0.9rem 2.5rem;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      }
+
+      .slider-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+      }
+
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #cbd5e0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .dot.active {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        transform: scale(1.4);
+        box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+      }
+
+      /* Projects Section */
+      h2 {
+        font-size: 2.8rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.05),
+          rgba(240, 147, 251, 0.05)
+        );
+        padding: 2rem;
+        border-radius: 25px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+      }
+
+      .project-card:hover::before {
+        opacity: 0.1;
+      }
+
+      .project-card:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 25px 60px rgba(102, 126, 234, 0.4);
+        border-color: #667eea;
+      }
+
+      .project-card h3 {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-card img {
+        max-width: 100%;
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.4s ease;
+      }
+
+      .project-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .project-details {
+        color: #4a5568;
+        line-height: 1.7;
+      }
+
+      .project-details p {
+        text-align: justify;
+      }
+
+      /* Contact Section */
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #2d3748;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 15px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.8);
+        font-family: inherit;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        background: white;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      button[type="submit"] {
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        color: white;
+        padding: 1.1rem 3.5rem;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        width: 100%;
+      }
+
+      button[type="submit"]:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+      }
+
+      .contact-info {
+        text-align: center;
+        margin-top: 2rem;
+        color: #718096;
+      }
+
+      .contact-info a {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      @media (max-width: 768px) {
+        .slide-about {
+          flex-direction: column;
+        }
+
+        nav ul {
+          gap: 1.5rem;
+        }
+
+        .container {
+          padding: 2rem;
+        }
+
+        .slider-btn {
+          padding: 0.7rem 1.8rem;
+          font-size: 0.95rem;
+        }
+
+        .profile-image {
+          width: 300px;
+          height: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#home" onclick="showSection('home')">Home</a></li>
+        <li>
+          <a href="#projects" onclick="showSection('projects')">Projects</a>
+        </li>
+        <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="home" class="active">
+      <div class="container">
+        <div class="slider-wrapper" id="sliderWrapper">
+          <!-- Slide 1: Picture & About Me -->
+          <div class="slide slide-about">
+            <div class="profile-section">
+              <img
+                src="image/profile.jpg.jfif"
+                alt="Profile Picture"
+                class="profile-image"
+              />
+              <h1>Erica C. Cubos</h1>
+            </div>
+            <div class="about-content">
+              <h2>About Me</h2>
+              <br />
+              <p>
+                Get to know me! I am Erica C. Cubos, a passionate web developer
+                someday specializing in creating clean, user-friendly websites.
+                I’ve had the opportunity to work on a variety of class projects
+                where I designed and developed websites from the ground up.
+                These projects have given me hands-on experience in HTML, CSS,
+                and JavaScript, and have allowed me to explore different aspects
+                of web development, from responsive design to user interface
+                creation user-friendly websites.
+              </p>
+              <br />
+              <p>
+                I am a working student who enjoys discovering new things and
+                keeping life simple. I like doing things in a calm,
+                straightforward way and focusing on what truly matters. Even
+                while balancing work and studies, I stay curious and open to
+                learning. I'm an easy-to-go person who appreciates simple
+                routines, meaningful experiences, and small moments that help me
+                grow every day.
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 2: Hobbies -->
+          <div class="slide slide-hobbies">
+            <h2>My Hobbies</h2>
+            <div class="hobbies-container">
+              <div class="hobby-box">
+                <div class="hobby-icon">📷</div>
+                <h3>Photography</h3>
+                <p>Capturing beautiful moments</p>
+              </div>
+              <div class="hobby-box">
+                <div class="hobby-icon">🏊</div>
+                <h3>Swimming</h3>
+                <p>Staying fit in the water</p>
+              </div>
+              <div class="hobby-box">
+                <div class="hobby-icon">✈️</div>
+                <h3>Travelling</h3>
+                <p>Exploring new destinations</p>
+              </div>
+              <div class="hobby-box">
+                <div class="hobby-icon">🎮</div>
+                <h3>Gaming</h3>
+                <p>Strategic games enthusiast</p>
+              </div>
+              <div class="hobby-box">
+                <div class="hobby-icon">⚽</div>
+                <h3>Playing Sports</h3>
+                <p>Staying active and competitive</p>
+              </div>
+              <div class="hobby-box">
+                <div class="hobby-icon">🎬</div>
+                <h3>Watching Movies</h3>
+                <p>Enjoying cinema and storytelling</p>
+              </div>
+              <div class="hobby-box">
+                <div class="hobby-icon">💪</div>
+                <h3>Exercising</h3>
+                <p>Building strength and wellness</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Education -->
+          <div class="slide slide-education">
+            <h2>Education</h2>
+
+            <div class="education-timeline">
+              <!-- Elementary Section -->
+              <div class="edu-section">
+                <h3 class="edu-header">Elementary</h3>
+                <div class="edu-box">
+                  <p><strong>School:</strong> El Salvador Elementary School</p>
+                  <p><strong>Year:</strong> 2017</p>
+                  <p><strong>Honors:</strong> With Honors</p>
+                </div>
+              </div>
+
+              <!-- Junior High School Section -->
+              <div class="edu-section">
+                <h3 class="edu-header">Junior High School</h3>
+                <div class="edu-box">
+                  <p>
+                    <strong>School:</strong> Ambassador Pablo R. Suarez National
+                    High School
+                  </p>
+                  <p><strong>Year:</strong> 2021</p>
+                  <p><strong>Honors:</strong> With Honors</p>
+                </div>
+              </div>
+
+              <!-- Senior High School Section -->
+              <div class="edu-section">
+                <h3 class="edu-header">Senior High School</h3>
+                <div class="edu-box">
+                  <p>
+                    <strong>School:</strong> Ambassador Pablo R. Suarez National
+                    High School
+                  </p>
+                  <p><strong>Year:</strong> 2023</p>
+                  <p><strong>Strand:</strong> GAS - ABM</p>
+                  <p><strong>Honors:</strong> With Honors</p>
+                </div>
+              </div>
+
+              <!-- College Section -->
+              <div class="edu-section">
+                <h3 class="edu-header">College</h3>
+                <div class="edu-box">
+                  <p><strong>School:</strong> Holy Name University</p>
+                  <p>
+                    <strong>Course:</strong> Bachelor of Science in Information
+                    Technology
+                  </p>
+                  <p><strong>Year Level:</strong> 3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+          <button class="slider-btn" onclick="previousSlide()">
+            ← Previous
+          </button>
+          <button class="slider-btn" onclick="nextSlide()">Next →</button>
+        </div>
+        <div class="slider-dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card" onclick="toggleProjectDetails(this)">
+            <h3>Project One : Basic Mascot Logo</h3>
+            <div class="project-details" style="display: none">
+              <img src="image/logo.jpg.jfif" alt="Project One" />
+              <p><strong>Status:</strong> Completed</p>
+              <br />
+              <p>
+                For our Basic Multimedia midterm project, I created a simple
+                mascot logo using my own photo. We were required to use Adobe
+                Photoshop to apply what we learned in the topic Adobe Photoshop
+                Basics.
+              </p>
+            </div>
+          </div>
+          <div class="project-card" onclick="toggleProjectDetails(this)">
+            <h3>Project Two: Portfolio Website</h3>
+            <div class="project-details" style="display: none">
+              <img src="C:\Users\501C\Downloads\api.png" alt="Project Two" />
+              <p><strong>Status:</strong> Completed</p>
+              <br />
+              <p>
+                Portfolio website for a creative agency featuring smooth
+                animations and interactive elements.
+              </p>
+            </div>
+          </div>
+          <div class="project-card" onclick="toggleProjectDetails(this)">
+            <h3>Project Three: API Integration</h3>
+            <div class="project-details" style="display: none">
+              <img src="image/ptoject3.jpg.jpeg" alt="Project Two" />
+              <p><strong>Status:</strong> Completed</p>
+              <br />
+              <p>
+                My final project for our course Systems Integration and
+                Architecture 1, we are assigned to design a website, that must
+                have 4 static pages with 1 API per page. The API in my website
+                are the Weather API, Currency Converter, Random Facts API, and
+                Email Verification.
+              </p>
+            </div>
+          </div>
+          <div class="project-card" onclick="toggleProjectDetails(this)">
+            <h3>Project Four: MotoCar Rental System</h3>
+            <div class="project-details" style="display: none">
+              <img src="image/project4.jpg.jpeg" alt="Project Four" />
+              <p><strong>Status:</strong> Completed</p>
+              <br />
+              <p>
+                Our final project for the course Advanced Information
+                Management, a robust web-based platform designed to streamline
+                the process of renting motorcars. Built using PHP for the
+                front-end and a powerful back-end database integration, the
+                system provides both users and administrators with a seamless
+                and efficient experience. The platform allows users to browse
+                available vehicles, make reservations, and manage bookings in
+                real-time, while administrators can easily track vehicle
+                availability, process rentals, and maintain customer data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Get In Touch</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+        <div class="contact-info">
+          <p>
+            Or reach me at:
+            <a href="mailto:ericacubos@gmail.com">ericacubos@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let currentSlide = 0;
+      const totalSlides = 3;
+
+      function showSection(sectionId) {
+        const sections = document.querySelectorAll("section");
+        sections.forEach((section) => {
+          section.classList.remove("active");
+        });
+        document.getElementById(sectionId).classList.add("active");
+
+        if (sectionId === "home") {
+          currentSlide = 0;
+          updateSlider();
+        }
+      }
+
+      function updateSlider() {
+        const sliderWrapper = document.getElementById("sliderWrapper");
+        sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlide);
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+      }
+
+      function previousSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider();
+      }
+
+      function goToSlide(slideIndex) {
+        currentSlide = slideIndex;
+        updateSlider();
+      }
+
+      function handleSubmit(event) {
+        event.preventDefault();
+        alert("Thank you for your message! I will get back to you soon.");
+        event.target.reset();
+      }
+
+      function toggleProjectDetails(card) {
+        const details = card.querySelector(".project-details");
+        details.style.display =
+          details.style.display === "none" ? "block" : "none";
+      }
+    </script>
+  </body>
+</html>
